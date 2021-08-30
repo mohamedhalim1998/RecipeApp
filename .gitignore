@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+app/src/main/java/com/mohamed/halim/essa/recipe/data/network/model/a.json
+app/src/main/java/com/mohamed/halim/essa/recipe/util/ApiKey.kt
