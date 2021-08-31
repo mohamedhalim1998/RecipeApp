@@ -8,18 +8,14 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import com.mohamed.halim.essa.recipe.data.network.ApiService
 import com.mohamed.halim.essa.recipe.ui.theme.RecipeTheme
-import com.mohamed.halim.essa.recipe.util.APP_ID
-import com.mohamed.halim.essa.recipe.util.APP_KEY
+import com.mohamed.halim.essa.recipe.ui.recipeslistscreen.RecipesScreen
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -28,11 +24,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             App {
-
-                val res = remember { mutableStateOf("") }
-                getRes(res);
-                //Greeting(name = "Recipe")
-                Text(text = res.value);
+                RecipesScreen()
             }
         }
 
@@ -74,6 +66,7 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     App {
-        Greeting(name = "Recipe")
+//        Greeting(name = "Recipe")
+        RecipesScreen()
     }
 }
