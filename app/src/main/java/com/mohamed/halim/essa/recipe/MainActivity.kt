@@ -10,7 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
+import com.mohamed.halim.essa.recipe.data.domain.Recipe
 import com.mohamed.halim.essa.recipe.data.network.ApiService
+import com.mohamed.halim.essa.recipe.ui.recipedetail.RecipeDetails
 import com.mohamed.halim.essa.recipe.ui.theme.RecipeTheme
 import com.mohamed.halim.essa.recipe.ui.recipeslistscreen.RecipesScreen
 import com.squareup.moshi.Moshi
@@ -26,7 +33,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             App {
-                RecipesScreen()
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "RECIPES_LIST") {
+                    composable("RECIPES_LIST") { RecipesScreen(navController) }
+                    composable(
+                        "RECIPE_DETAILS?recipe={recipe}",
+                        arguments = listOf(navArgument("recipe") {
+                            type = NavType.StringType
+                        })
+                    ) { backStackEntry -> RecipeDetails(backStackEntry.arguments?.getString("recipe")!!) }
+                }
+
             }
         }
 
@@ -34,7 +51,7 @@ class MainActivity : ComponentActivity() {
 
 }
 
-fun getRes(res : MutableState<String>) {
+fun getRes(res: MutableState<String>) {
     val applicationScope = CoroutineScope(Dispatchers.Default)
     val api = Retrofit.Builder()
         .baseUrl("https://api.edamam.com/api/")
