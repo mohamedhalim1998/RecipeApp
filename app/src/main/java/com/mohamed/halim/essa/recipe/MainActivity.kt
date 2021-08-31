@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
 import com.mohamed.halim.essa.recipe.data.network.ApiService
 import com.mohamed.halim.essa.recipe.ui.theme.RecipeTheme
@@ -20,6 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -42,6 +44,7 @@ fun getRes(res : MutableState<String>) {
     applicationScope.launch {
         res.value = api.search("egg").toString();
     }
+
 
 }
 
@@ -67,6 +70,6 @@ fun Greeting(name: String) {
 fun DefaultPreview() {
     App {
 //        Greeting(name = "Recipe")
-        RecipesScreen()
+        //RecipesScreen()
     }
 }
