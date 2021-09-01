@@ -11,18 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
+import com.google.gson.Gson
 import com.mohamed.halim.essa.recipe.data.domain.Recipe
 import com.mohamed.halim.essa.recipe.ui.component.ExpandableCard
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 @ExperimentalMaterialApi
 @Composable
 fun RecipeDetails(recipeJSON: String) {
 
-    val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-    val jsonAdapter = moshi.adapter(Recipe::class.java).lenient()
-    val recipe = jsonAdapter.fromJson(recipeJSON);
+
+    val recipe = Gson().fromJson(recipeJSON, Recipe::class.java)
     val scrollState = ScrollState(0)
     Column(
         modifier = Modifier

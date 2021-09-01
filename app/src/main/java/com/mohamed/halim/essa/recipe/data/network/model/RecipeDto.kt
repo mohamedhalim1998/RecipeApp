@@ -1,39 +1,37 @@
 package com.mohamed.halim.essa.recipe.data.network.model
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
+
 data class RecipeDto(
-    @Json(name = "recipe")
+    @SerializedName("recipe")
     val recipeInfo: RecipeInfo
 ) {
 
-    @JsonClass(generateAdapter = true)
     data class RecipeInfo(
-        @Json(name = "calories")
+        @SerializedName("calories")
         val calories: Double,
-        @Json(name = "cuisineType")
+        @SerializedName("cuisineType")
         val cuisineType: List<String>,
-        @Json(name = "image")
+        @SerializedName("image")
         val image: String,
-        @Json(name = "ingredientLines")
+        @SerializedName("ingredientLines")
         val ingredientLines: List<String>,
-        @Json(name = "label")
+        @SerializedName("label")
         val label: String,
-        @Json(name = "mealType")
+        @SerializedName("mealType")
         val mealType: List<String>,
-        @Json(name = "shareAs")
+        @SerializedName("shareAs")
         val shareAs: String,
-        @Json(name = "source")
+        @SerializedName("source")
         val source: String,
-        @Json(name = "totalTime")
+        @SerializedName("totalTime")
         val totalTime: Int,
-        @Json(name = "totalWeight")
+        @SerializedName("totalWeight")
         val totalWeight: Double,
-        @Json(name = "uri")
+        @SerializedName("uri")
         val uri: String,
-        @Json(name = "url")
+        @SerializedName("url")
         val url: String,
 
     )

@@ -11,20 +11,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
+import com.google.gson.Gson
 import com.mohamed.halim.essa.recipe.data.domain.Recipe
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+
 
 @Composable
 fun RecipeCard(recipe: Recipe, navController: NavController) {
-    val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-    val jsonAdapter = moshi.adapter(Recipe::class.java)
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navController.navigate("RECIPE_DETAILS?recipe=${jsonAdapter.toJson(recipe)}")
+                navController.navigate("RECIPE_DETAILS?recipe=${Gson().toJson(recipe)}")
             },
         elevation = 5.dp
     ) {

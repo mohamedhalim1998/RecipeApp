@@ -1,35 +1,32 @@
 package com.mohamed.halim.essa.recipe.data.network.model
 
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
+
 data class Response(
-    @Json(name = "count")
+    @SerializedName("count")
     val count: Int,
-    @Json(name = "from")
+    @SerializedName("from")
     val from: Int,
-    @Json(name = "to")
+    @SerializedName("to")
     val to: Int,
-    @Json(name = "hits")
+    @SerializedName("hits")
     val recipes: List<RecipeDto>,
-    @Json(name = "_links")
-    val next: NextLink
+    @SerializedName("_links")
+    val next: NextLink? = null
 
 )
 
 
-@JsonClass(generateAdapter = true)
 data class NextLink(
-    @Json(name = "next")
+    @SerializedName("next")
     val next: Next
 ) {
-    @JsonClass(generateAdapter = true)
     data class Next(
-        @Json(name = "href")
+        @SerializedName("href")
         val href: String,
-        @Json(name = "title")
+        @SerializedName("title")
         val title: String
     )
 }
