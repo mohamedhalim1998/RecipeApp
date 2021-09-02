@@ -29,8 +29,7 @@ fun RecipesScreen(navController: NavController, viewModel: RecipesViewModel = hi
         LazyColumn {
             items(recipes.value) { recipe ->
                 RecipeCard(recipe = recipe) {
-                    viewModel.setRecipeNavId(recipe.id)
-                    navController.navigate("RECIPE_DETAILS")
+                    navController.navigate("RECIPE_DETAILS?recipe=${recipe.id}")
                 }
             }
         }

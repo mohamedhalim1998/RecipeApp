@@ -1,9 +1,11 @@
 package com.mohamed.halim.essa.recipe.ui.recipeslistscreen
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.mohamed.halim.essa.recipe.data.Repository
 import com.mohamed.halim.essa.recipe.data.domain.Recipe
 import androidx.hilt.Assisted
+import com.mohamed.halim.essa.recipe.ui.recipedetail.RecipeDetailsViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -41,9 +43,6 @@ class RecipesViewModel @Inject constructor(
         _query.value = query;
     }
 
-    fun setRecipeNavId(recipeId: String) {
-        state["STATE_KEY_RECIPE"] = recipeId
-    }
 
 
 }

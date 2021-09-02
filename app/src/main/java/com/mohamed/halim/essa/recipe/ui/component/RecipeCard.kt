@@ -16,14 +16,14 @@ import com.mohamed.halim.essa.recipe.data.domain.Recipe
 
 
 @Composable
-fun RecipeCard(recipe: Recipe, navController: NavController) {
+fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navController.navigate("RECIPE_DETAILS?recipe=${Gson().toJson(recipe)}")
+                onClick()
             },
         elevation = 5.dp
     ) {
