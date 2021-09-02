@@ -3,30 +3,30 @@ package com.mohamed.halim.essa.recipe
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.mohamed.halim.essa.recipe.data.domain.Recipe
-import com.mohamed.halim.essa.recipe.data.network.ApiService
 import com.mohamed.halim.essa.recipe.ui.recipedetail.RecipeDetails
 import com.mohamed.halim.essa.recipe.ui.theme.RecipeTheme
 import com.mohamed.halim.essa.recipe.ui.recipeslistscreen.RecipesScreen
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
+import com.mohamed.halim.essa.recipe.ui.recipeslistscreen.RecipesViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    //val viewModel: RecipesViewModel by viewModel()
     @ExperimentalMaterialApi
     @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +50,6 @@ class MainActivity : ComponentActivity() {
     }
 
 }
-
 
 
 @Composable
